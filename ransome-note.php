@@ -4,6 +4,10 @@
 
 <?php
 
+/*
+Problem: https://leetcode.com/problems/ransom-note/description/
+*/
+
 $magazine = "b";
 $ransomeNote = "aa";
 $mArray = str_split($magazine);
