@@ -5,6 +5,7 @@
 <?php
 
 /*
+Problem: https://leetcode.com/problems/maximum-depth-of-binary-tree/description/
 Lesson learned: 
 - Check the comments and parameters in the code before starting to code. TreeNode instead of an array.
 - Learned how to access class variables: its $classInstance->variable (not $classInstance->$variable ...no dollar sign)
