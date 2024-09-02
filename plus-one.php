@@ -6,9 +6,9 @@
 
 /*
 Problem: https://leetcode.com/problems/plus-one/description/
-Lesson learned: another problem dealing with limitation of float 
-- 
--
+Lesson learned:  
+- another problem dealing with limitation of float
+- copying entire array takes up time & memory -> avoid if you can
 */
 
 $digits = array(9);
