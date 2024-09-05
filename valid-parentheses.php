@@ -8,6 +8,7 @@
 Problem: https://leetcode.com/problems/valid-parentheses/?envType=study-plan-v2&envId=top-interview-150
 Lesson learned: 
 - Not very efficient solution. I need to revisit
+- simple element & pop is significantly faster than shift & unshift (the %2 addition didn't make that much difference)
 */
 
 $solution = new Solution();
@@ -24,34 +25,39 @@ class Solution {
      * @param String $s
      * @return Boolean
      *
+     * Runtime 0m beats 100%, Memory 20.48MB beats 16.23%
      */
     function isValid($s) {
         $stack = [];
 
-        for($x = 0; $x < strlen($s); $x++){
-            switch(substr($s, $x, 1)){
+        if(strlen($s)%2 != 0){
+            return false;
+        }
+
+        foreach(str_split($s) as $c){
+            switch($c){
                 case "(":
                 case "[":
                 case "{":
-                    array_unshift($stack, substr($s, $x, 1));
+                    $stack[] = $c;
                     break;
                 case ")":
-                    if($stack[0] != "("){
+                    if(end($stack) != "("){
                         return false;
                     }
-                    array_shift($stack); 
+                    array_pop($stack);  
                     break;
                 case "]":
-                    if($stack[0] != "["){
+                    if(end($stack) != "["){
                         return false;
                     }
-                    array_shift($stack);  
+                    array_pop($stack);  
                     break;
                 case "}":
-                    if($stack[0] != "{"){
+                    if(end($stack) != "{"){
                         return false;
                     }
-                    array_shift($stack); 
+                    array_pop($stack); 
                     break;
             }       
         }
@@ -61,6 +67,7 @@ class Solution {
         }
         return true;
     }
+}
 
     /**
      * @param String $s
