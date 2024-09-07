@@ -7,7 +7,7 @@
 /*
 Problem: https://leetcode.com/problems/jump-game/
 Lesson learned: 
-- I'll have to revisit. The accepted solution is very inefficient.
+- I'll have to revisit. The accepted solution is very inefficient. Maybe try backward next time.
 */
 
 $nums[] = [2,3,1,1,4];
