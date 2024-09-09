@@ -9,6 +9,8 @@ Problem: https://leetcode.com/problems/count-complete-tree-nodes/
 Lesson learned: 
 - cleaner code (class Solution) runs slower but saves memory
 - code that trys to return result qucker (class Solution1) runs faster but uses more memory
+- def. of a complete binary tree = a special type of binary tree where all the levels of the tree a filled
+completely except the lower level nodes which are filled from as left as possible.
 */
 
 $solution = new Solution();
