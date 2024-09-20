@@ -8,7 +8,7 @@
 Problem: https://leetcode.com/problems/merge-intervals/
 Lesson learned: 
 - usort() using a class member function
--
+- use of spaceship operator "<=>" and shorthand for if-then "?:"
 */
 
 $solution = new Solution();
@@ -17,13 +17,17 @@ $result;
 
 class Solution {
 
+    function cmp($a, $b) {
+        return $a[0] <=> $b[0] ?: $a[1] <=> $b[1];
+    }
+
     /**
      * @param Integer[] $a, $b
      * @return Integer
      * 
      * comparison operator for an Integer array size of 2
      */
-    function cmp($a, $b){
+    function cmpInefficient($a, $b){
         if($a[0] === $b[0]){
             if($a[1] === $b[1]){
                 return 0;
