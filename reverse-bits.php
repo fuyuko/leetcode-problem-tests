@@ -18,7 +18,7 @@ $result;
 
 class Solution {
     /**
-     * @param Integer $n
+     * @param int $n
      * @return Integer
      * 
      * Runtime 7ms beats 68.09%, Memory 19.81mb beats 59.57%
@@ -32,7 +32,7 @@ class Solution {
     }
 
     /**
-     * @param Integer $n
+     * @param int $n
      * @return Integer
      * 
      * Runtime 10ms beats 48.94%, Memory 19.90mb beats 59.57%
@@ -46,7 +46,7 @@ class Solution {
     }
 
     /**
-     * @param Integer $n
+     * @param int $n
      * @return Integer
      * 
     * Runtime 12ms beats 29.79%, Memory 19.77mb beats 80.85%%
