@@ -34,9 +34,94 @@ class Solution {
      * @param TreeNode $root
      * @return Integer
      * 
-     *  Runtime 20 ms beats 14.29%, Memory 21.26mb beats 94.29%
+     * Took an advantage of BTS structure 
+     * Runtime 12ms beats 68.57%, Memory 21.29mb beats 94.29%
      */
     function getMinimumDifference($root) {
+        $lv = null;
+        $rv = null;
+
+        if($root->left !== null){
+            $lv = $this->findClosestLeft($root->left);
+        }
+        if($root->right !== null){
+            $rv = $this->findClosestRight($root->right);
+        }
+
+        //if($lv === null && $rv === null) return -1;
+
+        $lv = $lv ?? $rv;
+        $rv = $rv ?? $lv;
+
+        $lv = abs($root->val - $lv);
+        $rv = abs($root->val - $rv);
+        //echo "left = " . $lv . " right = " . $rv . "\n";
+        $min = min($lv, $rv);
+
+        if($min === 1) return 1;
+
+        if($root->left !== null){
+            $this->getNextMinDifference($root->left, $min);
+        }
+        if($root->right !== null){
+            $this->getNextMinDifference($root->right, $min);
+        }
+
+        return $min;
+    }
+
+    function getNextMinDifference(&$root, &$min){
+        if($root->left === null && $root->right === null) return;
+
+        if($root->left !== null){
+            $lv = $this->findClosestLeft($root->left);
+        }
+        if($root->right !== null){
+            $rv = $this->findClosestRight($root->right);
+        }
+
+        $lv = $lv ?? $rv;
+        $rv = $rv ?? $lv;
+
+        $lv = abs($root->val - $lv);
+        $rv = abs($root->val - $rv);
+
+        //echo "left = " . $lv . " right = " . $rv . "\n";
+
+        if($min > min($lv, $rv)){
+            $min = min($lv, $rv);
+        }
+
+        if($root->left !== null){
+            $this->getNextMinDifference($root->left, $min);
+        }
+        if($root->right !== null){
+            $this->getNextMinDifference($root->right, $min);
+        }
+    }
+
+    function findClosestLeft(&$root){
+        if($root->right === null){
+            return $root->val;
+        }
+        return $this->findClosestLeft($root->right);
+    }
+
+    function findClosestRight(&$root){
+        if($root->left === null){
+            return $root->val;
+        }
+        return $this->findClosestRight($root->left);
+    }
+
+    /**
+     * @param TreeNode $root
+     * @return Integer
+     * 
+     *  Still slow...
+     *  Runtime 20 ms beats 14.29%, Memory 21.26mb beats 94.29%
+     */
+    function getMinimumDifferenceNoDuplicateNode($root) {
         $vals[$root->val] = 1;
 
         if($root->left !== null){
