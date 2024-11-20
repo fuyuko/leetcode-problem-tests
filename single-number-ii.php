@@ -9,19 +9,7 @@ Problem: https://leetcode.com/problems/single-number-ii/
 Lesson learned: 
 - my solution is not meeting the requirement of O(1) space complexity
 - The one that's meet O(1) space complexity is using bit manipulation.
-- I found this solution from other solution submissions. I still don't fully understand how it works.
-
-function singleNumber($nums) {
-        $ones = 0;
-        $twos = 0;
-
-        foreach ($nums as $num) {
-          $ones ^= ($num & ~$twos);
-          $twos ^= ($num & ~$ones);
-        }
-
-        return $ones;
-    }
+- The copilot solution is using bit manipulation.
 */
 
 $solution = new Solution();
@@ -48,6 +36,18 @@ class Solution {
         }
         $keys = key($map);
         return $keys;
+    }
+
+    function singleNumberByCopilot($nums) {
+        $ones = 0;
+        $twos = 0;
+
+        foreach ($nums as $num) {
+            $ones = ($ones ^ $num) & ~$twos;
+            $twos = ($twos ^ $num) & ~$ones;
+        }
+
+        return $ones;
     }
 }
 
